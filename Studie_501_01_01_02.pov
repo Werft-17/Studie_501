@@ -479,14 +479,11 @@ union {
 
 object {
 	Stage( 
-		20, // Breite
-		8, // Höhe
+		20,	// Breite
+		8,	// Höhe
 		14	// Länge
 	)
 	texture {
-		// T_Wood11
-		// T_Stone8
-		// T_Silver_5C
 		// T_Boden
 		// scale 2
 		pigment {
