@@ -53,7 +53,7 @@ global_settings {
 #declare use_camera_number = 1;
 
 // Licht
-#declare use_area_s1 = true;
+#declare use_area_s1 = false;
 #declare use_area_s2 = true;
 
 #switch( use_camera_number)
