@@ -1,9 +1,9 @@
 
 //	Studie_501
 //
-//	@version	1.1.3.0
+//	@version	1.2.1.0
 //	@autor		Dietrich Roland Pehlke
-//	@date		2020-04-22
+//	@date		2020-04-23
 //
 
 #version 3.6;
@@ -40,11 +40,11 @@ global_settings {
 #declare render_walls = true;
 
 // Nullpunkt
-#declare show_zero = true;
-#declare show_metric_points = true;
+#declare show_zero = false;
+#declare show_metric_points = false;
 
 // Messlatte(-n)
-#declare show_yardstick = true;
+#declare show_yardstick = false;
 
 // use_crackle
 #declare use_crackle = false;
@@ -497,3 +497,200 @@ object {
 		translate < 1.27, 0, 0 >	
 	}
 #end
+
+// ####### A
+#macro Huelse( pDurchmesser, pLaenge, pDicke, pPhasenhoehe )
+	#local temp_Radius = pDurchmesser/2;
+	#local temp_innenradius = temp_Radius-pDicke;
+	
+	#local temp_phasenhoehe = pPhasenhoehe; // 0.013;
+	#local temp_Hoehe =  (pLaenge/2)-(temp_phasenhoehe*2);
+	
+	object {
+		difference {
+			union {
+				// 1
+				object {
+					cylinder {
+						< 0,-temp_Hoehe, 0 >,
+						< 0, temp_Hoehe, 0 >,
+						temp_Radius	
+					}
+				}
+				// 2 Phase oben
+				object {
+					difference {
+						// unten
+						object {
+							cone {
+								<0,temp_Hoehe,0>,
+								temp_Radius,
+								<0,temp_Hoehe+ temp_phasenhoehe,0>,
+								temp_Radius-temp_phasenhoehe	
+							}
+						}
+						// oben
+						object {
+							cone {
+								<0,temp_Hoehe - 0.01,0>,
+								temp_innenradius-temp_phasenhoehe,
+								<0,temp_Hoehe+ temp_phasenhoehe+0.01,0>,
+								temp_innenradius+(2*temp_phasenhoehe)	
+							}
+									
+						}
+					}
+				}
+				
+				// 3 Phase unten
+				object {
+					difference {
+						// oben
+						object {
+							cone {
+								< 0, -temp_Hoehe - temp_phasenhoehe, 0 >,
+								temp_Radius-temp_phasenhoehe,
+								< 0, -temp_Hoehe , 0 >,
+								temp_Radius	
+							}
+						}
+						// unten
+						object {
+							cone {
+								<0, -temp_Hoehe - temp_phasenhoehe - 0.01,0>,
+								temp_innenradius + (2*temp_phasenhoehe),
+								<0, - temp_Hoehe + 0.01,0>,
+								temp_innenradius - temp_phasenhoehe	
+							}
+									
+						}
+						
+					}
+				}
+			}
+			// Zylinder innen
+			object {
+				cylinder {
+					< 0,-temp_Hoehe-1.01, 0 >,
+					< 0, temp_Hoehe+1.01, 0 >,
+					temp_innenradius	
+				}
+			}
+		}			
+	}
+#end
+
+#macro Huelse_halbiert( pDurchmesser, pLaenge, pDicke, pPhasenhoehe, pWinkel )
+	difference {
+		Huelse( pDurchmesser, pLaenge, pDicke, pPhasenhoehe )
+		
+		plane {
+			x, 0	
+			rotate y*pWinkel
+		}
+	}
+#end
+
+#declare huelse_rotate_x = -90;
+#declare huelse_rotate_y = 240;
+#declare huelse_rotate_z = 0;
+
+// #### A1
+object {
+union {
+object {
+	Huelse( 
+		0.93,	// Duchmesser
+		1.2,	// Länge
+		0.21,	// Dicke/Stärke
+		0.025	// Phasenhöhe
+	)
+	rotate < huelse_rotate_x, huelse_rotate_y, huelse_rotate_z>
+	texture {
+		T_Silver_3B
+		scale 0.5
+		rotate < 90, -15, 90 >
+	}
+	// Oberflächenstruktur
+	normal{	
+		bump_map{
+    		jpeg "Bilder/Aluminiumblech_02.jpg"
+     		map_type 0 // 0=planar, 1=spherical, 2=cylindrical, 5=torus
+     		interpolate 0
+     		//  0=none, 1=linear, 2=bilinear, 4=normalized distance
+   			//once // falls Bild nicht wiederholt werden soll.
+   			//use_color //
+     		bump_size 1
+		} // end of bump_map,
+    	scale 4.2
+    }   // end of norm
+    // end
+}
+// 2
+object {
+	Huelse( 
+		1.23,	// Duchmesser
+		0.3,	// Länge
+		0.13,	// Dicke/Stärke
+		0.015	// Phasenhöhe
+	)
+	translate < 0, 0.4, 0>
+	rotate < huelse_rotate_x, huelse_rotate_y, huelse_rotate_z>
+	
+	texture {
+		T_Brass_5D
+		scale 0.5
+		rotate < 90, -15, 90 >
+	}
+}
+// 3
+object {
+	Huelse( 
+		1.53,	// Duchmesser
+		0.5,	// Länge
+		0.08,	// Dicke/Stärke
+		0.015	// Phasenhöhe
+	)
+	translate < 0, 0.5, 0>
+	rotate < huelse_rotate_x, huelse_rotate_y, huelse_rotate_z>
+	
+	texture {
+		T_Copper_5D
+		scale 0.5
+		rotate < 90, -15, 90 >
+	}
+}
+
+}
+translate < 0, 0.3, 0>
+}
+////////// B
+#macro Abgerundeter_Stab( pLaenge, pDurchmesser )
+#local r = pDurchmesser / 2;
+#local l = (pLaenge / 2)-r;
+
+union {
+	object {
+		cylinder {
+			< 0, -l, 0 >,
+			< 0,  l, 0 >,
+			r
+		}	
+	}
+	
+	object {
+		sphere {
+			< 0, -l, 0 >,
+			r
+		}
+	}
+	
+	object {
+		sphere {
+			< 0, l, 0 >,
+			r	
+		}
+	}
+}
+#end
+
