@@ -1,9 +1,8 @@
-
 //	Studie_501
 //
-//	@version	1.6.6.0
+//	@version	2.1.2.0
 //	@autor		Dietrich Roland Pehlke
-//	@date		2020-05-24
+//	@date		2020-05-31
 //
 
 #version 3.6;
@@ -1177,22 +1176,173 @@ texture {
 		granite
   		turbulence 0.9	// feiner
   		color_map {
-  			[0.000, 0.128   color rgbt <0.820, 0.580, 0.580, 0.000>
-            		        color rgbt <0.851, 0.812, 0.741, 0.235>]
-    		[0.128, 0.282   color rgbt <0.851, 0.812, 0.741, 0.235>
-            		        color rgbt <0.792, 0.694, 0.690, 0.282>]
-    		[0.282, 0.393   color rgbt <0.792, 0.694, 0.690, 0.282>
-            		        color rgbt <0.647, 0.655, 0.655, 0.133>]
-    		[0.393, 0.590   color rgbt <0.647, 0.655, 0.655, 0.133>
-            		        color rgbt <0.851, 0.812, 0.741, 0.333>]
-    		[0.590, 0.983   color rgbt <0.851, 0.812, 0.741, 0.333>
-            		        color rgbt <0.647, 0.655, 0.655, 0.282>]
-    		[0.983, 1.001   color rgbt <0.647, 0.655, 0.655, 0.282>
-            		        color rgbt <0.820, 0.580, 0.580, 0.000>]
+  			[ 0.000, 0.128 color rgbt < 0.920, 0.980, 0.980, 0.500 > color rgbt < 0.851, 0.812, 0.741, 0.235 > ]
+    		[ 0.128, 0.282 color rgbt < 0.851, 0.812, 0.741, 0.235 > color rgbt < 0.792, 0.694, 0.690, 0.282 > ]
+    		[ 0.282, 0.393 color rgbt < 0.792, 0.694, 0.690, 0.282 > color rgbt < 0.647, 0.655, 0.655, 0.133 > ]
+    		[ 0.393, 0.590 color rgbt < 0.647, 0.655, 0.655, 0.133 > color rgbt < 0.851, 0.812, 0.741, 0.333 > ]
+    		[ 0.590, 0.983 color rgbt < 0.851, 0.812, 0.741, 0.333 > color rgbt < 0.647, 0.655, 0.655, 0.282 > ]
+    		[ 0.983, 1.001 color rgbt < 0.647, 0.655, 0.655, 0.282 > color rgbt < 0.920, 0.980, 0.980, 0.500 > ]
    		}
  	}
+ 	finish {
+ 		phong 0.5
+ 		phong_size 50
+ 		ambient 0.4
+ 		diffuse 0.3
+ 		// specular 0.5
+ 		//metallic 0.5
+ 	}
  }
- 
+
+#declare T_aldus_01 = texture {
+	pigment {
+		granite
+		color_map {
+			[ 0.00000 rgbf < 1.00000, 1.00000, 1.00000, 0.00000> ]
+			[ 0.30000 rgbf < 0.99831, 0.91583, 0.61589, 0.50000> ]
+			[ 0.60000 rgbf < 0.58188, 0.44625, 0.33377, 0.00000> ]
+			[ 1.00000 rgbf < 0.83431, 0.62838, 0.21039, 0.00000> ]
+		}
+		sine_wave
+		rotate <0.0, 0.0, 0.0>
+		scale <1.0, 1.0, 1.0>
+	}
+}
+
+#declare T_aldus_02 = texture {
+	pigment {
+		magnet 2
+		mandel 50
+		//exponent 2
+		interior 2 1
+		color_map {
+			[ 0.00000 rgbf < 1.00000, 1.00000, 1.00000, 0.00000> ]
+			[ 0.30000 rgbf < 0.99831, 0.91583, 0.61589, 0.50000> ]
+			[ 0.60000 rgbf < 0.58188, 0.44625, 0.33377, 0.00000> ]
+			[ 1.00000 rgbf < 0.83431, 0.62838, 0.21039, 0.00000> ]
+		}
+		cubic_wave
+turbulence <0.5, 0.2, 0.0>
+octaves 2.5
+rotate <0.0, 0.0, 0.0>
+frequency 3.2
+		//cubic_wave
+		//rotate <0.0, 0.0, 0.0>
+		// scale < 1.0, 10.0, 1.0>
+	}
+}
+
+#declare myTex = 
+texture { T_Stone8 scale 0.03*7 }
+//texture { T_Grnt18a_2 scale 0.2 rotate < 20, 45, 90 > }
+texture { T_Grnt18a_2 scale 0.3 rotate < 0, -45, 0 > }
+
+// Material
+#declare akadin = material {
+	texture {
+		pigment {
+			granite
+			color_map {
+				// [ 0.00000 rgbf < 1.00000, 1.00000, 1.00000, 0.8 > ]
+				// [ 0.50000 rgbf < 0.64359, 0.51129, 0.33444, 0.5 > ]
+				// [ 1.00000 rgb < 0.34449, 0.42894, 0.33649> ]
+			[ 0.000, 0.128 color rgbt < 0.920, 0.980, 0.980, 0.500 > color rgbt < 0.851, 0.812, 0.741, 0.0 > ]
+    		// [ 0.128, 0.282 color rgbt < 0.851, 0.812, 0.741, 0.235 > color rgbt < 0.792, 0.694, 0.690, 0.0 > ]
+    		[ 0.282, 0.393 color rgbt < 0.792, 0.694, 0.690, 0.282 > color rgbt < 0.647, 0.655, 0.655, 0.0 > ]
+    		//[ 0.393, 0.590 color rgbt < 0.647, 0.655, 0.655, 0.133 > color rgbt < 0.851, 0.812, 0.741, 0.0 > ]
+    		[ 0.590, 0.983 color rgbt < 0.851, 0.812, 0.741, 0.333 > color rgbt < 0.647, 0.655, 0.655, 0.0 > ]
+    		[ 0.983, 1.001 color rgbt < 0.647, 0.655, 0.655, 0.282 > color rgbt < 0.920, 0.980, 0.980, 0.0 > ]
+
+			}
+			ramp_wave
+			scale <1.0, 1.4, 1.0>*0.2
+		}
+		normal {
+			leopard scale 0.4
+		}
+		finish {
+			reflection {
+				rgb <0.000000, 0.000000, 0.000000>
+			}
+			irid {
+				0.0
+				thickness 0.0
+				turbulence <0.0, 1.0, 0.0>
+			}
+
+			brilliance 0.5
+		}
+	}
+	interior {
+		ior 1.3
+		caustics 1.0
+		fade_distance 1 fade_power 1
+		dispersion 1.0
+		dispersion_samples 7
+		media {
+			scattering {
+				2,	//isotropic_scattering
+				rgb <1.000000, 1.000000, 1.000000>
+			}
+		}
+	}
+}
+#declare aldusAnakin =
+material {
+	texture {
+		pigment {
+			image_map {
+				jpeg "Bilder/Aluminiumblech_02_04.jpg"
+				map_type 0	//planar
+				//interpolate 1	//none
+			}
+			rotate < -90, 0, 0>
+			scale <1.0, 1.0, 1.0>*4.0
+			translate < -2, 0, 0.5>
+		}
+		normal {
+			//marble
+			bump_map{
+		    		jpeg "Bilder/Aluminiumblech_02.jpg"
+		     		map_type 0 // 0=planar, 1=spherical, 2=cylindrical, 5=torus
+		     		interpolate 0
+		     		//  0=none, 1=linear, 2=bilinear, 4=normalized distance
+		   			//once // falls Bild nicht wiederholt werden soll.
+		   			//use_color //
+		     		bump_size 12
+
+				} // end of bump_map,
+						     		rotate < -90, 0, 0>
+		}
+		finish {
+			reflection {
+				rgb <0.000000, 0.000000, 0.000000>
+			}
+			irid {
+				0.0
+				thickness 0.0
+				turbulence <0.0, 1.0, 0.0>
+			}
+
+			brilliance 1.0
+		}
+	}
+
+	interior {
+		ior 1.3
+		caustics 1.0
+		fade_distance 1 fade_power 1
+		dispersion 1.0
+		dispersion_samples 7
+		media {
+			scattering {
+				1,	//isotropic_scattering
+				rgb <1.000000, 1.000000, 1.000000>
+			}
+		}
+	}
+}
+
 object
 { 
 	union {
@@ -1225,9 +1375,12 @@ object
 					>
 					#local cc = (i-1)*6+k;
 			/// ####1
-			texture{ T_Stone8 scale x_Scale }
+			//texture{ T_aldus_02 translate < -1.5, 0, 0> rotate <-90, i*2, 0> scale 2.5
+			// scale x_Scale*5 
+			//}
 			// texture{ T_Grnt18a_2 scale x_Scale*4 }
-		
+			// material { akadin scale 0.1 rotate x*k }
+			material { aldusAnakin }
 			/// ###		
 					
 				}
@@ -1238,3 +1391,31 @@ object
 	rotate < -90, 0, 0>
 	translate < 0, 2, -0.5>
 }
+//#declare myTex = 
+//// texture { T_Stone8 scale 0.03*7 }
+//texture { T_Grnt18a_2 scale 0.2 rotate < 20, 45, 90 > }
+//texture { T_Grnt18a_2 scale 0.3 rotate < 0, -45, 0 > }
+//	
+//object {
+//		#local x_BoxSize = 2.8;
+//		#local x_B2 = x_BoxSize/2;
+//		#local x_Scale = 0.03;
+//		#local x_Between = 0.014;
+//	Box2( 
+//		x_BoxSize, 
+//		x_BoxSize, 
+//		x_BoxSize, 
+//		0.055,	// Phase
+//		true,
+//		true,
+//		true
+//	)
+//	texture{ myTex	}
+//	interior {
+// 			ior 1	
+// 			
+// 	}
+//
+//	rotate < -30, -30, -45>
+//}
+

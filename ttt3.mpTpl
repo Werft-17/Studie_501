@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>customizedColorMap</key>
+	<dict>
+		<key>colormap</key>
+		<data>
+		BAtzdHJlYW10eXBlZIHoA4QBQISEhAhjb2xvcm1hcACEhAdNYXBCYXNlAISE
+		CE5TT2JqZWN0AIWShISEDk5TTXV0YWJsZUFycmF5AISEB05TQXJyYXkAlYQB
+		aQSShJeYBJKEhIQITlNOdW1iZXIAhIQHTlNWYWx1ZQCVhAEqhIQBZpwAhpKE
+		hIQHTlNDb2xvcgCVhAFjAYQEZmZmZgEBAQGGkpqSmoaShJeYBJKEhIQITlNT
+		dHJpbmcBlYQBKwMwLjOGkoSfngGfgxCRfz+D1XNqP4Prqh0/g/x2SD+GkoSi
+		oQcwLjUwMDAwhpKahpKEl5gEkoSioQcwLjYwMDAwhpKEn54Bn4NA9hQ/gyl7
+		5D6DPuSqPoNIND4/hpKEoqEHMC4wMDAwMIaSqIaShJeYBJKEm5udnAGGkoSf
+		ngGfgySVVT+DMt0gP4PCcVc+gyTaVD+GkpqSmoaGmACYAZgAhg==
+		</data>
+	</dict>
+	<key>dictionaryTypeDefaults</key>
+	<string>PigmentTemplate</string>
+	<key>pigmentColorMapTabView</key>
+	<integer>2</integer>
+	<key>pigmentColorPatternFractalsInteriorTypeOn</key>
+	<integer>1</integer>
+	<key>pigmentColorPatternFractalsInteriorTypePopUp</key>
+	<integer>2</integer>
+	<key>pigmentColorPatternFractalsTypePopUp</key>
+	<integer>5</integer>
+	<key>pigmentColorPatternSelectPopUpButton</key>
+	<integer>17</integer>
+	<key>pigmentColorPatternWaveTypePopUpButton</key>
+	<integer>2</integer>
+	<key>pigmentDontWrapInPigment</key>
+	<integer>1</integer>
+	<key>pigmentFunctionWaveTypePopUpButton</key>
+	<integer>4</integer>
+	<key>pigmentMainTabView</key>
+	<integer>1</integer>
+	<key>pigmentTransformations</key>
+	<dict>
+		<key>dictionaryTypeDefaults</key>
+		<string>TransformationsTemplate</string>
+		<key>topTypePopUp</key>
+		<integer>2</integer>
+	</dict>
+	<key>pigmentTransformationsOn</key>
+	<integer>1</integer>
+</dict>
+</plist>
